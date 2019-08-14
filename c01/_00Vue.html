@@ -1,0 +1,45 @@
+<!--
+  Date: 2019-08-14
+  Description:
+
+  [Vue.js: 一種 JavaScript 框架]
+  - 使用簡潔的方式來渲染 DOM 物件
+  - vue 屬性中 el, data 是保留字, 各有用途
+
+  Author: TiramiAsu
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js</title>
+
+  <!-- Vue 的 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- 針對 id 為 app 的 DOM 物件 -->
+  <div id="app">
+    <!-- 雙大括弧放屬性名稱, 可直接取得值 -->
+    {{ message }}
+  </div>
+  
+  <!-- 此 Vue 的物件操控 id 為 app 的 DOM 物件 -->
+  <script>
+    var app = new Vue ({
+      // element id 為 app
+      el: '#app',
+      // Vue 物件的 data 中屬性 message 的值是 Hello vue!
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+    // 改變 Vue 物件中的 message 值
+    app.message = 'Hello Vue World!'
+  </script>
+
+</body>
+</html>
