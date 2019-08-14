@@ -1,0 +1,48 @@
+<!--
+  Date: 2019-08-14
+  Description:
+
+  [v-bind: 動態綁定]
+  - 使用動態綁定來同步渲染 DOM 物件所需資訊
+  - DOM 物件中的屬性前面加上 v-bind 註明值不是字串, 而是 Vue 中要綁定的屬性名稱
+
+  Author: TiramiAsu
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-bind</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Template -->
+  <div id="app">
+    滑鼠停在下列訊息幾秒, 可看到經動態綁定的提示資訊.<br><br>
+    <span v-bind:title="message">
+      1. 使用 v-bind 動態綁定 span 的 title 屬性 > v-bind:title="屬性名稱"
+    </span>
+    <br><br>
+    <span :title="message">
+      2. 使用 v-bind 的簡寫方式表示動態綁定 > :title="屬性名稱"
+    </span>
+  </div>
+
+  <!-- Script -->
+  <script>
+    var app = new Vue ({
+      el: '#app',
+      data: {
+        message: '頁面載入時間: ' + new Date().toLocaleString()
+      }
+    })
+    // 下一行程式碼取消註解再執行, 上面的 span 的 title 資訊也會同步改變
+    // app.message = 'Hello Vue World!'
+  </script>
+
+</body>
+</html>

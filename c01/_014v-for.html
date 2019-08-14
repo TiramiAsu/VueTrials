@@ -1,0 +1,53 @@
+<!--
+  Date: 2019-08-14
+  Description:
+
+  [v-for]
+  - 搭配陣列使用，可改變 DOM 物件結構
+
+  Author: TiramiAsu
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-for</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Template -->
+  <div id="app">
+    使用 v-for 依序取得 boxes 中每個 box 的物品<br><br>
+    <!-- 使用 forEach(關鍵字 in) 依序從 boxes 取得每個 box -->
+    <span v-for="box in boxes">
+      <!-- 取得每個 box 的屬性 thing 的值 -->
+      box: {{box.thing}}<br>
+    </span>
+    <br><br>
+  </div>
+
+  <!-- Script -->
+  <script>
+    var app = new Vue ({
+      el: '#app',
+      data: {
+        boxes: [
+          // 每個 box 都有一樣物品
+          { thing: 'balls' },
+          { thing: 'books' },
+          { thing: 'toys' },
+          { thing: 'cups' },
+          { thing: 'pens' }
+        ],
+      }
+    })
+    // 下一行程式碼取消註解再執行, 上面的 boxes 會多一樣物品
+    // app.boxes.push({ thing: 'notebook' })
+  </script>
+
+</body>
+</html>

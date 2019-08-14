@@ -1,0 +1,40 @@
+<!--
+  Date: 2019-08-14
+  Description:
+
+  [v-model: 雙向綁定]
+  - 實現表單輸入和應用狀態之間的雙向綁定
+
+  Author: TiramiAsu
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-model</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Template -->
+  <div id="app">
+    輸入框輸入文字, 會同步改變 Vue 元件裡的屬性值<br><br>
+    <input v-model="message">
+    <p>{{ message }}</p>
+  </div>
+
+  <!-- Script -->
+  <script>
+    var app = new Vue ({
+      el: '#app',
+      data: {
+        message: 'Hello'
+      }
+    })
+  </script>
+
+</body>
+</html>

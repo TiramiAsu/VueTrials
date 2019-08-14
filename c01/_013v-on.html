@@ -1,0 +1,53 @@
+<!--
+  Date: 2019-08-14
+  Description:
+
+  [v-on]
+  - 除了動態綁定 DOM 物件所需資訊, 還可以綁定 DOM 物件結構
+  - v-on 可以簡寫成 @
+  - vue 屬性中 methods 是保留字, 元件用到的方法撰寫在這裡
+
+  Author: TiramiAsu
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-on</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Template -->
+  <div id="app">
+    使用 Vue 中的 methods 存放的方法改變 message 內容<br>
+    <p>{{ message }}</p>
+    <!-- 當 Button click 時, 呼叫綁定的方法 reverseText() -->
+    <button type="button" v-on:click="reverseText">Reverse Text (v-on:click)</button>
+    <br>
+    <!-- 簡寫 v-on -->
+    <button type="button" @click="reverseText">Reverse Text (@click)</button>
+  </div>
+
+  <!-- Script -->
+  <script>
+    var app = new Vue ({
+      el: '#app',
+      data: {
+        message: 'VueTrials by TiramiAsu'
+      },
+      // 
+      methods: {
+        reverseText () {
+          // 當 Status 為 true 就回傳 false, 反之
+          this.message = this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

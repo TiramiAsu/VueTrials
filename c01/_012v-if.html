@@ -1,0 +1,51 @@
+<!--
+  Date: 2019-08-14
+  Description:
+
+  [v-if]
+  - 除了動態綁定 DOM 物件所需資訊, 還可以綁定 DOM 物件結構
+
+  Author: TiramiAsu
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-if</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Template -->
+  <div id="app">
+    使用 Button 來讓 Vue 操控 DOM 物件出現與否<br><br>
+    <!-- 當 status 為 true, 此 span 就會出現, 否則就隱藏 -->
+    <span v-if="status === true">
+      - 訊息出現
+    </span>
+    <br><br>
+    <!-- 當 Button click 時, 呼叫 change() 方法來改變 status -->
+    <button type="button" onclick="change()">{{ btnText }}</button>
+  </div>
+
+  <!-- Script -->
+  <script>
+    var app = new Vue ({
+      el: '#app',
+      data: {
+        status: true,
+        btnText: 'Hide Message'
+      }
+    })
+    function change () {
+      // 當 Status 為 true 就回傳 false, 反之
+      app.status = (app.status === true) ? false : true
+      app.btnText = (app.btnText === 'Hide Message') ? 'Display Message' : 'Hide Message'
+    }
+  </script>
+
+</body>
+</html>
