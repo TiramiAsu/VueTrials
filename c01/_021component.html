@@ -1,0 +1,74 @@
+<!--
+  Date: 2019-08-15
+  Description:
+
+  [Vue 組件]
+  - 可建構一個獨立的組件(有許多 DOM 元件所組成, 類似群組的概念)
+  - 透過 tag, 可以產生很多組件, 而不用重複寫同一個組件
+
+  Author: TiramiAsu
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Component</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Template -->
+  <div id="app">
+    <ol>
+      <!-- 自定義組件名稱使用 tag 的方式就可以建構 -->
+      <custom-tag></custom-tag>
+      <custom-tag></custom-tag>
+      <custom-tag></custom-tag>
+    </ol>
+    <ol>
+      <!--
+        組件中的 props 名稱 item 要與 box 綁定, 才可以於組件的 template 中作用
+        - 綁定 key 值('v-bind:key', 也可以簡寫成 ':key'), 通常是資料中 (box) 的唯一值(e.g. id), 不建議用 boxes 的 index
+      -->
+      <robot
+        v-for='box in boxes'
+        :key='box.id'
+        :item='box'>
+      </robot>
+    </ol>
+  </div>
+
+  <!-- Script -->
+  <script>
+    // 建立一個 Vue Component, 名稱為 'custom-tag', 組件的樣板內容在 template 中
+    Vue.component('custom-tag', {
+      template: '<li>This is a component.</li>'
+    })
+
+    Vue.component('robot', {
+      // 增加一個 props(屬性), 名稱為 'item'(不可用烤肉串命名法: Kebeb Case)
+      props: ['item'],
+      // 每個 item 為了要對應 data 中的 boxes 每個值, 要用取得屬性值的 key 名稱 thing
+      template: '<li>{{ item.thing }}</li>'
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        boxes: [
+          // 每個 box 都有一樣物品
+          { id: 7, thing: 'balls' },
+          { id: 5, thing: 'books' },
+          { id: 13, thing: 'toys' },
+          { id: 24, thing: 'cups' },
+          { id: 14, thing: 'pens' }
+        ],
+      }
+    })
+  </script>
+
+</body>
+</html>
