@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>[vue] 1.5.1.3 計算屬性.計算屬性v.s.監聽屬性</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="demo">{{ fullName }}</div>
+
+  <script>
+    /* 命令式且重複的程式
+    var vm = new Vue({
+      el: '#demo',
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar'
+      },
+      watch: {
+        firstName: function (val) {
+          this.fullName = val + ' ' + this.lastName
+        },
+        lastName: function (val) {
+          this.fullName = this.firstName + ' ' + val
+        }
+      }
+    })
+    */
+    var vm = new Vue({
+      el: '#demo',
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar'
+      },
+      computed: {
+        fullName: function () {
+          return this.firstName + ' ' + this.lastName
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

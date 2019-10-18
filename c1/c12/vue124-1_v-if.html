@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>[vue] 1.2.4 條件與循環 | v-if</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app-3">
+    <p v-if="seen">現在你看到我了</p>
+  </div>
+
+  <script>
+    var app3 = new Vue({
+      el: '#app-3',
+      data: {
+        seen: true
+      }
+    })
+  </script>
+
+  <!-- Chrome> F12> console> (input) app3.seen = false -> 訊息會消失 -->
+
+</body>
+</html>
