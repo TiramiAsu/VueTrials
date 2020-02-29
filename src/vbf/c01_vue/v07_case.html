@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>case</title>
+  <!--
+    使用 axio 透過 API 取得 json 資料, 使用 Browser 的 console 查看 Vue Instance 的生命週期
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>case</h3>
+  <p><b>Reference by</b> <a href="https://jsonplaceholder.typicode.com/">免費 REST API 網站(https://getbootstrap.com/docs/4.4/utilities/spacing/)</a></p>
+  <h6>使用 axio 透過 API 取得 json 資料</h6>
+  <br />
+  <!-- HTML UI -->
+  <div id="app">
+    <ul>
+      <li v-for="(user, index) in users" :key="index">
+        {{ user.name }}
+      </li>
+    </ul>
+    <br />
+    <h6>輸入 username 會更新資料</h6>
+    <!-- input -->
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="material-icons">person</i></span>
+      </div>
+      <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+          placeholder="User Name" v-model="userName">
+    </div>
+    <br />
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- CDN: axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+      new Vue({
+        el: '#app',
+        data: {
+          users: [],
+          userName: ''
+        },
+        /* 初始化階段 */
+        beforeCreate() {
+          console.log('>>> before create: 資料未建立, element 未掛載')
+        },
+        created() {
+          console.log('>>>       created: 資料已建立, element 未掛載')
+        },
+        /* 掛載階段 */
+        beforeMount() {
+          console.log('>>>  before mount: 可在此設定 DOM 渲染前的處理')
+        },
+        mounted() {
+          console.log('>>>       mounted: element 已掛載(已渲染)')
+          var vm = this
+          axios.get('https://jsonplaceholder.typicode.com/users')
+            .then((reponse) => {
+              vm.users = reponse.data
+            })
+        },
+        /* 更新階段 */
+        beforeUpdate() {
+          console.log('>>>  beforeUpdate: DOM 數據更新前的處理')
+        },
+        updated() {
+          console.log('>>>       updated: DOM 數據更新完成(渲染完成)')
+        }
+      })
+    </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
