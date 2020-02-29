@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>template: 模板</title>
+  <!--
+    將 DOM 物件設定成變數, 使 Vue.js 可操控的此 DOM 物件
+    tamplate 中, 只會渲染第一個 DOM 物件(不可以有一個以上的 DOM 物件)
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>template: 模板</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app">
+    <!-- 已被 vue instance 的 template 所覆蓋, 顯示不出來 -->
+    <h4>{{ msg }}</h4>
+    <h4>Hello?</h4>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    /* 一行設定, 使用單引號(')即可 */
+    // var template = '<h4>{{ msg }}</h4>'
+    /* 多行設定, 需使用反引號(`) */
+    var template = `
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="material-icons">person</i>
+        </span>
+      </div>
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    `
+    new Vue({
+      el: '#app',
+      data: {
+        msg: 'My Template'
+      },
+      template
+    })
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
