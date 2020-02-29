@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>template: 模板 by ID</title>
+  <!--
+    將 DOM 物件設定成使 Vue.js 可操控的 DOM 物件(使用 id)
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>template: 模板 by ID</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="appTamplate"></div>
+  <div id="appScript"></div>
+
+  <!-- 建立模板: 透過 id 取得 -->
+  <!-- 1.Tamplate Tag -->
+  <template id="templateID">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="material-icons">person</i>
+        </span>
+      </div>
+      <input type="text" class="form-control" placeholder="template tag" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </template>
+
+  <!-- 2. script Tag -->
+  <script id="scriptID" type="x-template">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="material-icons">person</i>
+        </span>
+      </div>
+      <input type="text" class="form-control" placeholder="script tag" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </script>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#appTamplate',
+      template: '#templateID'
+    })
+    new Vue({
+      el: '#appScript',
+      template: '#scriptID'
+    })
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
