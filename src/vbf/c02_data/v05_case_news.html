@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>case: news</title>
+</head>
+<body style="padding: 2% 10%">
+  <h3>case: news</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app">
+    <div class="container-fluid">
+      <div class="alert alert-info" role="alert">
+        <h5 class="text-center">新聞 - 類別篩選</h5>
+        <div class="row">
+          <div class="col-8">
+            <form>
+              <div class="form-group">
+                <select class="form-control" id="exampleFormControlSelect1" v-model="select">
+                  <option v-for="(section, index) in sections" :key="index">
+                    {{ section }}
+                  </option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-info" @click="getPostsByCategory(select)">Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3" v-for="(post, index) in results" :key="index">
+          <div class="card">
+            <div class="card-header">
+              {{ post.title }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">類別: {{ post.category }}</h5>
+              <p class="card-text">{{ post.content }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    const SECTIONS = "醫療, 小說, 藝術, 歷史"
+    const posts = [
+      {
+        "title": "仍望醫技了服",
+        "content": "而有服個有前，反合動冷入！仍樣就天管能天演度成個權大。存學然明小層進易進辦爸所表……地事個真有有示多色會現建人起總，專其高，才兩臺可，小源以和新點夜。",
+        "category": "醫療"
+      },
+      {
+        "title": "戰心舞港做",
+        "content": "說財達等論目了例天，車改名防只法於因說歷？的是作十，此對單腦初財來比光半同眼下很可可快一？都另邊流二位社？為女開。最演倒亞基的牛政有定……火國界來發風大陸他果館人頭太母，配盡時林和為感量下風辦雄方……表們科大的動河，經的書大記本題道，大張檢、社統密子一候的好地力們望開病的利多。",
+        "category": "歷史"
+      },
+      {
+        "title": "建用目下回色識不人一出",
+        "content": "雙程系連地家有中就率子也制有聲詩都南望，學富機：看形方題創方中都？好著樣，望裡事：界不必個趣在有聽後長配非如不產可向舞，答先孩企受作果有接、加本文多管站簡部此不在內市道市呢市品紀變愛水的合，終精法念，在器數……常她情火相……有的過裡代沒雙人出現系科球慢不區了條的？",
+        "category": "小說"
+      },
+      {
+        "title": "來灣放語的一策",
+        "content": "父開能光名立會化團味上就仍聲仍怎；寫家可地……長高願從開賽……不府在。隨古帶後，切來大後現口只去我該重，事書習們家去式呢間，也海不票身作明……和到面我權、心夠連展構葉裡性我離排灣驚早出白發甚放作相痛遠論著晚破難建基他馬般提達動邊切結面，比備成朋在人一登接學選戰調識史。",
+        "category": "歷史"
+      },
+      {
+        "title": "算傳一施對進從病以更",
+        "content": "痛濟們家師母對表足久創名安？手沒近，年的自始子都作遊商爾大？用沒在、直叫原是：病期對一、的近在都母者讀！增是一個病了門進親容產、費裡香說操甚灣深面上那全什隨的子靜成了問生一任何變人養、上天心心草發期明動童事成差生西動。還那選方灣的有點有兒的心的生速我英車質？",
+        "category": "醫療"
+      },
+      {
+        "title": "地工親上女說小男形氣言",
+        "content": "把以辦也易曾愛！不實會才要時甚，身裡可中師子司團動了的醫洲開葉以的課因足來的利常期本對……飛基音學加家圖和成教、離日的死日？性數灣作查在為收展遊點了無心雜下政品器口邊我不定十不要品表請建大聽以費感變哥確一，友技軍底為代兒結電思開大價建。",
+        "category": "小說"
+      },
+      {
+        "title": "興行業加水選別是好士畫然料",
+        "content": "庭那來改。遠比由布當怎當生和……不青一中到費下界天電然、高數不定算本世生就得案家文無年樓傷。一她你一想的聲，管推有賣為過界前野以立極樂壓品同小工被達銀。教幾至求有化望的可；馬使行小走事不那紀學兩華：竟腦人一足化們開以天物點山裡音不公價良造女你。",
+        "category": "藝術"
+      },
+      {
+        "title": "自以卻明然已",
+        "content": "離充手他臺目家，不說多好們他、他所實超那同方至做候話職其電這每過：法幾頭收術是服士？哥些戰綠麼平分的星量中，當則民北片國要電意為產等寶邊人。不與地價覺可看來，當現斯玩心之立；受頭統院子！技觀點馬火色認作北為首不懷用什動：出做的。受升急頭我正西士。",
+        "category": "小說"
+      },
+      {
+        "title": "越性望藥早",
+        "content": "只筆語問？去我指……題遊機備來外下取邊？生發成當絕們了約母；效將麼類有直員，的主文計城具，正生相過不旅新負作樂就星，求南收活命軍要做要民作……且經生可明不是大方金定；下說真空體業美足調童一多元裡就或連物奇一才放書相臺能唱景裡裝新，統記今是這食際好量？",
+        "category": "醫療"
+      },
+      {
+        "title": "觀住第議把王",
+        "content": "入得一使神易神民只長存次角之其印以道對花最近何生先，主自產，活企區越念說氣綠很無能極馬候常臺變成麼進是意？下作先線看紅士特長開的動！次片們總氣：得出本……整不也動片響的定燈。東能認安會以風，想獲修她臺步法結意化友，的現作親孩，件客玩解沒之人答生至生我個她受發何。",
+        "category": "歷史"
+      }
+    ]
+    new Vue({
+      el: '#app',
+      data: {
+        posts,
+        results: [],
+        sections: SECTIONS.split(', '),
+        select: '醫療'
+      },
+      created() {
+        this.getPostsByCategory(this.select)
+      },
+      methods: {
+        getPostsByCategory(select) {
+          var self = this
+          // 逐一比對所有 post 的 category 與 user 選擇的 select 相同
+          var post = []
+          self.posts.forEach(p => {
+            if (p.category === select) {
+              post.push(p)
+            }
+          })
+          var chunk = 4
+          self.results = post.slice(0, chunk) // 只選前4筆資料
+        }
+      }
+    })
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
