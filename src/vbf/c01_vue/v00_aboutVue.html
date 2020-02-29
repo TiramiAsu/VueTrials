@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>About Vue</title>
+  <!--
+    HTML UI 配合 js 邏輯與 User 互動 -> jQuery 範例 -> 使用 MVVM 架構(Vue 實例)實現
+  -->
+</head>
+<body>
+  <h3>[ HTML + js ] HTML UI 配合 js 邏輯與 User 互動 </h3>
+  <p id="msg"></p>
+  <button id="sayHi">Say Hi</button>
+
+  <script>
+    var msg = document.getElementById('msg')
+    msg.innerHTML = 'Hello World'
+
+    document.getElementById('sayHi').addEventListener('click', function() {
+      alert('Welcome, you are about to start learning how to using Vue.js')
+    })
+  </script>
+
+  <hr />
+
+  <h3>[ jQuery ] 範例</h3>
+  <p id="message"></p>
+  <button id="sayHello">Say Hello</button>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#message').text('Hello jQuery')
+      $('#sayHello').click(function () {
+        alert('This is jQuery sample')
+      })
+    })
+  </script>
+
+  <hr />
+
+  <h3>[ Vue.js ] 使用 MVVM 架構(Vue 實例)實現</h3>
+  <div id="app">
+    <p>{{ msg }}</p>
+    <button @click="sayHi()">Say Hi</button>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello Vue.js'
+      },
+      methods: {
+        sayHi() {
+          alert('Welcome, this is Vue.js')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
