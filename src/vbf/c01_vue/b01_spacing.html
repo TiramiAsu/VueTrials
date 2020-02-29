@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <title>Spacing: 留白</title>
+  <!--
+    使用 Bootstrap 4 快速套用邊界
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>Spacing: 留白</h3>
+  <h6>class="{property}{sides}-{size}" -> class="mt-3"</h6>
+  <br />
+  <p><b>Reference by</b> <a href="https://getbootstrap.com/docs/4.4/utilities/spacing/">https://getbootstrap.com/docs/4.4/utilities/spacing/</a></p>
+  <p>Where <em>property</em> is one of:</p>
+  <ul>
+    <li><code class="highlighter-rouge">m</code> - for classes that set <code class="highlighter-rouge">margin</code></li>
+    <li><code class="highlighter-rouge">p</code> - for classes that set <code class="highlighter-rouge">padding</code></li>
+  </ul>
+
+  <p>Where <em>sides</em> is one of:</p>
+  <ul>
+    <li><code class="highlighter-rouge">t</code> - for classes that set <code class="highlighter-rouge">margin-top</code> or <code class="highlighter-rouge">padding-top</code></li>
+    <li><code class="highlighter-rouge">b</code> - for classes that set <code class="highlighter-rouge">margin-bottom</code> or <code class="highlighter-rouge">padding-bottom</code></li>
+    <li><code class="highlighter-rouge">l</code> - for classes that set <code class="highlighter-rouge">margin-left</code> or <code class="highlighter-rouge">padding-left</code></li>
+    <li><code class="highlighter-rouge">r</code> - for classes that set <code class="highlighter-rouge">margin-right</code> or <code class="highlighter-rouge">padding-right</code></li>
+    <li><code class="highlighter-rouge">x</code> - for classes that set both <code class="highlighter-rouge">*-left</code> and <code class="highlighter-rouge">*-right</code></li>
+    <li><code class="highlighter-rouge">y</code> - for classes that set both <code class="highlighter-rouge">*-top</code> and <code class="highlighter-rouge">*-bottom</code></li>
+    <li>blank - for classes that set a <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> on all 4 sides of the element</li>
+  </ul>
+
+  <p>Where <em>size</em> is one of:</p>
+  <ul>
+    <li><code class="highlighter-rouge">0</code> - for classes that eliminate the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> by setting it to <code class="highlighter-rouge">0</code></li>
+    <li><code class="highlighter-rouge">1</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * .25</code></li>
+    <li><code class="highlighter-rouge">2</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * .5</code></li>
+    <li><code class="highlighter-rouge">3</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer</code></li>
+    <li><code class="highlighter-rouge">4</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * 1.5</code></li>
+    <li><code class="highlighter-rouge">5</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * 3</code></li>
+    <li><code class="highlighter-rouge">auto</code> - for classes that set the <code class="highlighter-rouge">margin</code> to auto</li>
+  </ul>
+  <br />
+  <h4>左右邊界</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Purpose</th>
+        <th>(l) 左邊界</th>
+        <th>(x) 左右置中</th>
+        <th>(r) 右邊界</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>(m) Margin CSS</th>
+        <td>class="ml-3"</td>
+        <td>class="mx-auto"</td>
+        <td>class="mr-3"</td>
+      </tr>
+      <tr>
+        <th>(p) Padding CSS</th>
+        <td>class="pl-3"</td>
+        <td>class="px-auto"</td>
+        <td>class="pr-3"</td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <h4>上下邊界</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Purpose</th>
+        <th>(m) Margin CSS</th>
+        <th>(p) Padding CSS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>(t) 上邊界</th>
+        <td>class="mt-3"</td>
+        <td>class="pt-3"</td>
+      </tr>
+      <tr>
+        <th>(y)上下置中</th>
+        <td>class="my-auto"</td>
+        <td>class="py-auto"</td>
+      </tr>
+      <tr>
+        <th>(b) 下邊界</th>
+        <td>class="mb-3"</td>
+        <td>class="pb-3"</td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <h4>負邊界</h4>
+  <h6>組成: {property}{sides}-<span style="color: red">n</span>{size} -> class="mt-n3"</h6>(n: Negative)
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
