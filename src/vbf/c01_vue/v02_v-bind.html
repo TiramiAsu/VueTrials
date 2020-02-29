@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <title>v-bind: 單向流出資料綁定</title>
+  <!--
+    綁定參數 placeholder -> v-bind:placeholder="(vue instance 中的 data 裡的參數名稱)"
+    可以簡寫為 -> :placeholder="(vue instance 中的 data 裡的參數名稱)"
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>v-bind: 單向流出資料綁定</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app">
+      <!-- input -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+          :placeholder="yourName">
+      </div>
+      <br />
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+      new Vue({
+        el: '#app',
+        data: {
+          yourName: 'Your Name'
+        }
+      })
+    </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
