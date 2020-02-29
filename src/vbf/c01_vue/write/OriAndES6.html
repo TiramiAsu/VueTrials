@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ori and ES6</title>
+  <!--
+    ES6 寫法由正規寫法演變而來
+  -->
+</head>
+<body>
+  <h3>Ori and ES6</h3>
+  <!-- HTML UI -->
+  <div id="app">
+    <span v-pre>{{ msg }}</span> -> {{ msg }}
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    /*
+      // 正規寫法 I
+      var msg = 'Wow, 正規 I'
+      new Vue({
+        el: '#app',
+        data: {
+          msg: msg // 正規
+        }
+      })
+      // ES6 寫法 I
+      var msg = 'Wow, ES6 I'
+      new Vue({
+        el: '#app',
+        data: {
+          msg // ES6
+        }
+      })
+      // 正規寫法 II
+      var data = {
+        msg: 'Wow, 正規 II'
+      }
+      new Vue({
+        el: '#app',
+        data: data // 正規
+      })
+      // ES6 寫法 II
+      var data = {
+        msg: 'Wow, ES6 II'
+      }
+      new Vue({
+        el: '#app',
+        data // ES6
+      })
+    */
+    // ES6 寫法 III (常用)
+    new Vue({
+      el: '#app',
+      data: {
+        msg: 'Wow, ES6 III'
+      }
+    })
+  </script>
+</body>
+</html>
