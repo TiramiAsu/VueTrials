@@ -23,7 +23,7 @@
   </style>
   <title>case: Note</title>
 </head>
-<body style="padding: 2% 10%">
+<body style="padding: 2% 0%">
   <h3>case: Note</h3>
   <br />
   <!-- HTML UI -->
@@ -77,11 +77,52 @@
                 <td>{{ aNote.content }}</td>
                 <td>{{ aNote.timeBuild }}</td>
                 <td>
-                  <button type="button" class="btn btn-danger btn-sm btn-circle" @click="deleteNote(aNote)">X</button>
+                  <button type="button" class="btn btn-danger btn-sm btn-circle"
+                    data-toggle="modal"
+                    data-target="#deleteModal"
+                    @click="getNote(aNote)">
+                    <i class="material-icons">delete</i>
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trigger Modal -->
+    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">確定要刪除 ?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>Title</th>
+                  <td>{{ modalNote.title }}</td>
+                </tr>
+                <tr>
+                  <th>Content</th>
+                  <td>{{ modalNote.content }}</td>
+                </tr>
+                <tr>
+                  <th>Time Build</th>
+                  <td>{{ modalNote.timeBuild }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" @click="deleteNote(modalNote)">Delete</button>
+          </div>
         </div>
       </div>
     </div>
@@ -96,6 +137,11 @@
       el: '#app',
       data: {
         note: {
+          title: '',
+          content: '',
+          timeBuild: 0
+        },
+        modalNote: {
           title: '',
           content: '',
           timeBuild: 0
@@ -126,16 +172,18 @@
         },
         deleteNote(bean) {
           var vm = this
-          if (confirm('確定要刪除這則記事?')) {
-            var idx = vm.noteList.indexOf(bean)
-            if (idx !== -1) {
-              vm.noteList.splice(bean, 1)
-            }
-          }
+          vm.noteList.splice(bean, 1)
+          $('#deleteModal').modal('hide') // hide delete dialog
         },
         saveNote() {
           // 將 noteList 變成 JSON 存到 local storage
           localStorage.setItem('noteList', JSON.stringify(this.noteList))
+        },
+        getNote(bean) {
+          var vm = this
+          vm.modalNote.title = bean.title
+          vm.modalNote.content = bean.content
+          vm.modalNote.timeBuild = bean.timeBuild
         }
       }
     })
