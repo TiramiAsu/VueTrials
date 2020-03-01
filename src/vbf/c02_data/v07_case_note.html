@@ -100,7 +100,13 @@
           content: '',
           timeBuild: 0
         },
-        noteList: []
+        noteList: JSON.parse(localStorage.getItem('noteList')) || []
+      },
+      watch: { // -> local storage OR session storage
+        noteList: {
+          handler: 'saveNote',
+          deep: true
+        }
       },
       methods: {
         createNote() {
@@ -126,6 +132,10 @@
               vm.noteList.splice(bean, 1)
             }
           }
+        },
+        saveNote() {
+          // 將 noteList 變成 JSON 存到 local storage
+          localStorage.setItem('noteList', JSON.stringify(this.noteList))
         }
       }
     })
