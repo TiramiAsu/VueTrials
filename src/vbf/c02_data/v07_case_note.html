@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
   <style>
     body {
       font-family: Microsoft JhengHei;
@@ -75,7 +76,7 @@
               <tr v-for="(aNote, index) in noteList" :key="index">
                 <td>{{ aNote.title }}</td>
                 <td>{{ aNote.content }}</td>
-                <td>{{ aNote.timeBuild }}</td>
+                <td>{{ fmtTime(aNote.timeBuild) }}</td>
                 <td>
                   <button type="button" class="btn btn-danger btn-sm btn-circle"
                     data-toggle="modal"
@@ -172,7 +173,14 @@
         },
         deleteNote(bean) {
           var vm = this
-          vm.noteList.splice(bean, 1)
+          var idx = vm.noteList.indexOf(bean)
+          var newNotes = []
+          vm.noteList.forEach(note => {
+            if (note.title !== bean.title) {
+              newNotes.push(note)
+            }
+          })
+          vm.noteList = newNotes
           $('#deleteModal').modal('hide') // hide delete dialog
         },
         saveNote() {
@@ -184,6 +192,10 @@
           vm.modalNote.title = bean.title
           vm.modalNote.content = bean.content
           vm.modalNote.timeBuild = bean.timeBuild
+        },
+        fmtTime(dateTime) {
+          var time  = moment(dateTime).format('MMMM Do YYYY, hh:mm:ss a')
+          return time
         }
       }
     })
