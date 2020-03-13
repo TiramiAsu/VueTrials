@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>v-show: 資料顯示</title>
+  <!--
+    透過 boolean 決定 DOM 物件是否要顯示
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>v-show: 資料顯示</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app">
+    <div v-show="true">情況一: v-show='true'</div>
+    <div v-show="false">情況二: v-show='false'</div>
+    <input type="checkbox" v-model="isShow" />isShow
+    <br />
+    <div v-show="isShow">情況三: v-show='isShow', isShow {{ isShow }}</div>
+    <form>
+      <select v-model="item">
+        <option value="1">item: 1</option>
+        <option value="2">item: 2</option>
+        <option value="3">item: 3</option>
+        <option value="4">item: 4</option>
+      </select>
+    </form>
+    <div v-show="item">情況四: v-show="item = {{ item }}"</div>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        isShow: false,
+        item: 1
+      }
+    })
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
