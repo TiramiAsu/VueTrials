@@ -22,18 +22,34 @@
     <div class="container-fluid mt-2">
       <div class="row">
         <div class="alert alert-warning w-100 text-center" role="alert">
-          <p :style="{color: colorSelected}">顏色設定</p>
+          <h2 :style="{color: colorSelected, 'text-decoration': lineSelected}">文字設定</h2>
+          <!-- 不使用單引號, 要用小駝峰命名法
+          <p :style="{color: colorSelected, textDecoration: lineSelected}">顏色設定</p>
+          -->
         </div>
       </div>
       <div class="row justify-content-center">
+        <!-- color -->
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            請選擇
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownColor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            請選擇字體顏色
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#"
               v-for="(color, index) in colors" :key="index"
               @click="selectColor(color)">{{ color.title }}</a>
+          </div>
+        </div>
+        &nbsp;
+        <!-- line -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLine" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            請選擇線條
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#"
+              v-for="(line, index) in lines" :key="index"
+              @click="selectLine(line)">{{ line.title }}</a>
           </div>
         </div>
       </div>
@@ -50,6 +66,8 @@
     new Vue({
       el: '#app',
       data: {
+        colorSelected: '',
+        lineSelected: '',
         colors: [
           {
             id: 1,
@@ -67,11 +85,27 @@
             name: 'blue'
           }
         ],
-        colorSelected: ''
+        lines: [
+          {
+            title: '頂線',
+            name: 'overline'
+          },
+          {
+            title: '中線',
+            name: 'line-through'
+          },
+          {
+            title: '底線',
+            name: 'underline'
+          }
+        ]
       },
       methods: {
         selectColor(color) {
           this.colorSelected = color.name
+        },
+        selectLine(line) {
+          this.lineSelected = line.name
         }
       }
     })
