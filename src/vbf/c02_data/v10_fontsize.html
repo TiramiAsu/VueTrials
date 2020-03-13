@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>style: css 動態綁定: 文字大小</title>
+  <!--
+    改變文字大小
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>style: css 動態綁定: 文字大小</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app">
+    <div class="container-fluid mt-2">
+      <div class="row">
+        <div class="col-md-10">子中說區發</div>
+        <div class="col-md-2 ml-auto text-right">
+          <a href="#" @click="minusFont">A-</a>
+          <a href="#" @click="plusFont">A+</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-warning w-100 mt-2" role="alert">
+            <p class="mb-0" :style="fontStyle">
+              廣似有備程笑的論離遊但：於年來各拿，的都人命民了同本，多清客我，物銷時聲景這子破方解時然；果稱年場坡雄少機：總再站那知得路子以班視個本公學背節是場車標去大走氣學：院陽手毛己，可我有善告後展這刻。族中陽續國是正，場兒知說配……平盡用健賣一東師民然據力響一沒樹己空相為準？
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="text-center">
+            {{ fontSizeSetting }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        fontStyle: {
+          'font-size': '16px',
+        },
+        fontSizeSetting: 16
+      },
+      methods: {
+        minusFont() {
+          this.fontStyle['font-size'] = `${this.fontSizeSetting--}px`
+        },
+        plusFont() {
+          this.fontStyle['font-size'] = `${this.fontSizeSetting++}px`
+        }
+      }
+    })
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
