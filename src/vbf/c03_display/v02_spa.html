@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>v-show: SPA 應用</title>
+  <!--
+    將 v-show 結合 css 應用於 Single Page Application
+  -->
+  <style>
+    .selected {
+      background-color: rgb(255, 200, 150)
+    }
+    li {
+      cursor: pointer
+    }
+    li:hover {
+      color: rgb(200, 80, 50);
+      font-family: Microsoft JhengHei;
+      font-weight: bold;
+      text-decoration: underline
+    }
+  </style>
+</head>
+<body style="padding: 2% 10%">
+  <h3>v-show: SPA 應用</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app" class="container-fluid">
+    <div class="row">
+      <!--<div class="card" style="width: 18rem;">-->
+      <div class="card mt-2 ml-2" style="width: 16%">
+        <div class="card-header">關於醫院</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" @click="item = 1" :class="{ selected: item === 1 }">醫院沿革</li>
+          <li class="list-group-item" @click="item = 2" :class="{ selected: item === 2 }">願景宗旨</li>
+          <li class="list-group-item" @click="item = 3" :class="{ selected: item === 3 }">院長的話</li>
+        </ul>
+      </div>
+      <div class="mt-2 ml-2" style="width: 80%">
+        <div v-show="item === 1" class="alert alert-info" role="alert">
+          醫院沿革
+        </div>
+        <div v-show="item === 2" class="alert alert-info" role="alert">
+          願景宗旨
+        </div>
+        <div v-show="item === 3" class="alert alert-info" role="alert">
+          院長的話
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        isShow: false,
+        item: 1
+      }
+    })
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
