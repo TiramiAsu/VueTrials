@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>style: css 動態綁定: class</title>
+  <!--
+    控制 class 樣式
+  -->
+</head>
+<body style="padding: 2% 10%">
+  <h3>style: css 動態綁定: class</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app">
+    <div class="container-fluid mt-2">
+      <!--
+      <div class="row">
+        <div class="col">
+          <p :calss="{'alert-info': isTrue}" class="alert w-100 text-center">
+            class 樣式綁定 -> 套用 true / flase
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p :calss="alert-info" class="alert w-100 text-center">
+            class 樣式綁定 -> 直接給定
+          </p>
+        </div>
+      </div>
+      -->
+      <div class="row">
+        <div class="alert w-100 text-center"
+            role="alert"
+            :class="[color, 'fontColor']">
+          A simple warning alert—check it out!
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+              Class Alert Style
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#" @click="setColor('alert-info')">Info (Default)</a>
+              <a class="dropdown-item" href="#" @click="setColor('alert-primary')">Primary</a>
+              <a class="dropdown-item" href="#" @click="setColor('alert-success')">Success</a>
+              <a class="dropdown-item" href="#" @click="setColor('alert-danger')">Danger</a>
+              <a class="dropdown-item" href="#" @click="setColor('alert-warning')">Warning</a>
+            </div>
+          </div>
+          <br />
+          <span>啟用狀態: {{ (isFont === false) ? '啟用中' : '已停用' }}</span>
+          <br />
+          <br />
+          <button type="button" :class="btn.color" @click="isEnable()">{{ btn.text }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        color: 'alert-info',
+        isFont: false,
+        btn: {
+          color: 'btn btn-danger',
+          text: 'Disable'
+        }
+      },
+      updated () {
+        console.log(this.color + ":" + this.isFont)
+      },
+      methods: {
+        setColor(type) {
+          if (!this.isFont) {
+            this.color = type
+          }
+        },
+        isEnable() {
+          if (this.btn.text === 'Disable') {
+            this.btn.color = 'btn btn-primary'
+            this.btn.text = 'Enable'
+          } else {
+            this.btn.color = 'btn btn-danger'
+            this.btn.text = 'Disable'
+          }
+          this.isFont = !this.isFont
+        }
+      }
+    })
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
