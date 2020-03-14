@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>v-show: 分頁效果</title>
+</head>
+<body style="padding: 2% 10%">
+  <h3>v-show: 分頁效果</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app" class="container">
+    <div class="row">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#" @click="itemPrevious">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#" @click="item = 1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#" @click="item = 2">2</a></li>
+          <li class="page-item"><a class="page-link" href="#" @click="item = 3">3</a></li>
+          <li class="page-item"><a class="page-link" href="#" @click="itemNext">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="row">
+      <div v-show="item === 1" class="alert alert-primary" role="alert">
+        <h2>1. 過得東底證經頭出開雨</h2>
+        <p>中性教事請車間地今研式大一較長許實相比生去然園的學將唱，會發得，能希能才覺由好多小都車公，他千盡官選；案你假方水片，動事夜角質她體樂是面，都很人就嗎了直，度的理。樣自臺人及，樂這運上加我！品種人日力直往們們今、當收外來程員當友過愛人親：如英對定灣市所動場血起些，經明舞行分眾訴再，告很見情、了的直設算這製年計復過術成並開小的臺能長，何制很知無沒細當政使接排位孩圖不失以是，飛但強詩門有位才！已無上樹利空林，灣心痛流法都坡上葉合照所。再軍視持直結又的過自親禮己之是省紙展外滿建她華文，都立心行類、不建眾快，和好再確直片一反帶正市可日港的的臺想所是多關問……了日結天空，望境銀聽到得。</p>
+        <p>認是西家加響晚爾上結過時，但男走門個計眼調工內；還經球們……須城水什友由身弟大作第目心一市造決節本面易有？沒山臺會專家爭多！想讀痛人法此、五子邊的它了喜書中飛明，程空文加多住背弟向行國流師的成情為那，跟生實來、賽的山頭從共子位木初音會這資作分事西為人不流系。</p>
+        <hr />
+        <a href="http://google.com">[Reference] http://google.com</a>
+      </div>
+      <div v-show="item === 2" class="alert alert-secondary" role="alert">
+        <h2>2. 道接老言因</h2>
+        <p>
+          自養白能聲而所服紀認國都我來所安自卻中者是同們小獲。科更健能是在的答布親做
+          <a class="text-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            喜一女我
+          </a>
+          ，他王身林取可題能團近山於是們般十天友程省東火修久畫大黃，實家部口通條，空亞高明通名天答年它平大快才象外可我可能要鄉明位子完主；名運他論天地。情的光愛怕經一天弟白務半，行年士過不，一民我不嗎種以媽設方，我多然底感們名！難以之起常備多這、品形燈十？聞好文才？去為口果地場藝是角造園家在時顧言的如環情感些居後大的思開直。來小多到現巴活王，孩馬簡？結心歌人，收站許？城我青大用臺。旅目縣中直陽經我電她議保得腳器以充。
+        </p>
+        <p>孩係格不種利！一之著臉……北招結羅不法一分喜的資：外水低道相朋；室學裡到趣技決場要消的：你分人、質除代族時般全他希回他樂觀提年共接自推手充器總年我動民？人得否常響水被爸。</p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <h3><b>[喜一女我]</b></h3>
+              走本公一他招的容平由紙是其！原有感，了中有印起大者？念分必。復國期識起世遊因響之別溫看廣前狀象望，求味今的紀會？著紅活意關這；全進臺，現主真支上理病麼靜們。了子我傳的賣樣家過外市書香麼做式修禮國到府時？
+              <hr />
+              <a href="http://google.com">[Reference] http://google.com</a>
+          </div>
+        </div>
+        <hr />
+        <a href="http://google.com">[Reference] http://google.com</a>
+      </div>
+      <div v-show="item === 3" class="alert alert-info" role="alert">
+        <h2>3. 防倒度賽花收</h2>
+        <p>想理記大這業高路，政日論幾在府情下問的車一。結接備電的向來研際說發一媽德法你的有物企際又體狀運我清的全形親北，說自民片量多見前有再頭快成散。</p>
+        <p>我人看先和！過還消們便顯比南，發不三這臺配分的的活不這……孩房達有孩檢還問了綠二我人研
+          <a href="#" data-toggle="popover"
+              title="[生我解直國思]"
+              data-content="半金須雨資再斯一奇清分後打口務員維寫我時難。">
+            生我解直國思
+          </a>：人年題媽上外己著具發，感境地我心服紅告報……我時葉工一是球先的車利能知往沒我國兒到以！山力與，錢見光生民的聽、世定體。主火顧士處，而持天較部命不我子來。輪中為在歌家得不廣夜得出支的動。了收每失例用究來管過，
+          <a class="text-success" data-toggle="tooltip" data-placement="bottom" title="種本資了書、強食是。">
+            生具華施盡刻球
+          </a>如義流，醫麗級意通精上兒的毛。</p>
+        <p>自種來只現生由合寶作不，喜天個小當親於手，對復顯我……看音國有謝法傳真上球本河？</p>
+        <hr />
+        <a href="http://google.com">[Reference] http://google.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        item: 1
+      },
+      updated() {
+        console.log(this.item)
+      },
+      methods: {
+        itemPrevious () {
+          this.item--
+          if (this.item < 1) {
+            this.item = 1
+          }
+        },
+        itemNext () {
+          this.item++
+          if (this.item > 3) {
+            this.item = 3
+          }
+        }
+      }
+    })
+    /* popover & tooltip */
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+</body>
+</html>
