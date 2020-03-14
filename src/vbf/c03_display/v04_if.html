@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font-awesome(icon) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- Google Meterial Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>v-if: 頁面顯示: 購書網站</title>
+  <style>
+  .carousel .carousel-item {
+    height: 300px
+  }
+  .carousel .carousel-item img {
+    min-height: 300px;
+    max-height: 400px;
+    object-fit: cover; /* 維持原比例填滿寬度及高度 */
+  }
+  </style>
+</head>
+<body style="padding: 2% 10%">
+  <h3>v-if: 頁面顯示: 購書網站</h3>
+  <br />
+  <!-- HTML UI -->
+  <div id="app" class="container-fluid mt-3">
+    <button type="button" class="btn btn-info" @click="day = !day">{{ (day) ? btn.nameTrue : btn.nameFalse }}</button>
+    <div v-if="!day" class="row">
+      <div class="col">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div v-for="(hotBook, index) in hotBooks" :key="index" class="carousel-item" :class="{active: hotBook.id === 1}">
+              <img :src="hotBook.cover" class="d-block w-100" :alt="hotBook.name">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{ hotBook.name }}</h5>
+                <p>{{ hotBook.description }}</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div v-if="day" class="row">
+      <div class="col">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">{{ hotShot.name }}</h1>
+            <p class="lead">{{ hotShot.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <template v-for="(book, index) in books" :key="index">
+        <div class="col-4">
+          <div class="card" style="width: 370px;">
+            <img :src="book.cover" class="card-img-top" :alt="book.name">
+            <div class="card-body">
+              <h4>{{ book.name }}</h4>
+              <p class="card-text">{{ book.description }}</p>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        btn: {
+          nameTrue: '星期一主打', // 為星期一時顯示
+          nameFalse: '其他天' // 除了星期一之外
+        },
+        day: false,
+        hotBooks: [
+          {
+            id: 1,
+            name: '什界價下決病動身在管人體媽',
+            description: '狀面口密；如能為必軍性議曾和頭本媽算智電錢愛元有斷解條如表子我動上人媽，親小不科朋轉此家出，吃來燈清，要一想。',
+            cover: 'https://picsum.photos/300/200?image=1'
+          },
+          {
+            id: 2,
+            name: '知以山團不待生有係',
+            description: '方今在請制壓，登注始如研於水直以分賽己一大包臺去品果直：一洋告叫室下出奇面電生紀，待的得我媽臺時。',
+            cover: 'https://picsum.photos/300/200?image=2'
+          },
+          {
+            id: 3,
+            name: '日我兒工把雜難處大據各人',
+            description: '到就財，的雲法調日世吸著子處調地加速？狀來試其一法旅養密心作力心去我語何一記遊：安用示發著、創果灣必：著依本美。',
+            cover: 'https://picsum.photos/300/200?image=3'
+          }
+        ],
+        hotShot: {
+            id: 3,
+            name: '日我兒工把雜難處大據各人',
+            description: '到就財，的雲法調日世吸著子處調地加速？狀來試其一法旅養密心作力心去我語何一記遊：安用示發著、創果灣必：著依本美。',
+            cover: 'https://picsum.photos/300/200?image=3'
+          },
+        books: [
+          {
+            id: 4,
+            name:'去教進異十如達來外情',
+            description: '把是修致隊屋形稱：了吸全前而港該人室直……長制金。',
+            cover: 'https://picsum.photos/300/200?random=1'
+          },
+          {
+            id: 5,
+            name:'子新非展想內',
+            description: '媽告些管他或他則利連有科來活到也有房？',
+            cover: 'https://picsum.photos/300/200?random=2'
+          },
+          {
+            id: 6,
+            name:'目所全學我已及年天過隨學作',
+            description: '樂觀向，子小臺境子是吸具民他政方動般加做出法往細他我著我改工的會一安境爸：同不說有係請選！',
+            cover: 'https://picsum.photos/300/200?random=3'
+          }
+        ]
+      },
+      updated() {
+        console.log(this.item)
+      },
+      methods: {
+        itemPrevious () {
+          this.item--
+          if (this.item < 1) {
+            this.item = 1
+          }
+        },
+        itemNext () {
+          this.item++
+          if (this.item > 3) {
+            this.item = 3
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
