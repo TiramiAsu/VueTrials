@@ -65,6 +65,49 @@
     {{ email }} - {{ password }}( {{ password.length }} )
   </div>
   <hr />
+  <div id="appNumber" class="container-fluid mt-2">
+    <h2>input.number</h2>
+    <h4>未設定 number</h4>
+    <form class="form-inline" @submit.prevent="onSubmitStr">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">#1</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Number 1" v-model="str1"
+          aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      &nbsp;<i class="fas fa-plus-circle"></i>&nbsp;
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">#2</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Number 2" v-model="str2"
+          aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary mb-3 ml-2"><i class="fas fa-calculator"></i></button>
+    </form>
+    <h4>設定 number</h4>
+    <form class="form-inline" @submit.prevent="onSubmitNum">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">#1</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Number 1" v-model.number="nbr1"
+          aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      &nbsp;<i class="fas fa-plus-circle"></i>&nbsp;
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">#2</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Number 2" v-model.number="nbr2"
+          aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <button type="submit" class="btn btn-primary mb-3 ml-2"><i class="fas fa-calculator"></i></button>
+    </form>
+  </div>
+  <hr />
 
   <!-- CDN: Vue.js -->
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -95,6 +138,27 @@
       methods: {
         onSubmit() {
           alert(`輸入的 Email: ${ this.email } - Password: ${ this.password }`)
+        }
+      }
+    })
+    new Vue({
+      el: '#appNumber',
+      data: {
+        str1: '',
+        str2: '',
+        nbr1: 0,
+        nbr2: 0,
+      },
+      methods: {
+        onSubmitStr() {
+          console.log('this.str1 type is number? ' + (typeof this.str1 === 'number'))
+          console.log('this.str2 type is number? ' + (typeof this.str2 === 'number'))
+          alert(`兩數字相加 = ${ this.str1 + this.str2 }`)
+        },
+        onSubmitNum() {
+          console.log('this.nbr1 type is number? ' + (typeof this.nbr1 === 'number'))
+          console.log('this.nbr2 type is number? ' + (typeof this.nbr2 === 'number'))
+          alert(`兩數字相加 = ${ this.nbr1 + this.nbr2 }`)
         }
       }
     })
