@@ -106,6 +106,25 @@
       </div>
       <button type="submit" class="btn btn-primary mb-3 ml-2"><i class="fas fa-calculator"></i></button>
     </form>
+    <h4>使用 typeof 判斷型態後處理</h4>
+    <form class="form-inline" @submit.prevent="onSubmit">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">#1</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Number 1" v-model="str3"
+          aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      &nbsp;<i class="fas fa-plus-circle"></i>&nbsp;
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">#2</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Number 2" v-model="str4"
+          aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <button type="submit" class="btn btn-primary mb-3 ml-2"><i class="fas fa-calculator"></i></button>
+    </form>
   </div>
   <hr />
 
@@ -148,6 +167,8 @@
         str2: '',
         nbr1: 0,
         nbr2: 0,
+        str3: '',
+        str4: ''
       },
       methods: {
         onSubmitStr() {
@@ -159,6 +180,14 @@
           console.log('this.nbr1 type is number? ' + (typeof this.nbr1 === 'number'))
           console.log('this.nbr2 type is number? ' + (typeof this.nbr2 === 'number'))
           alert(`兩數字相加 = ${ this.nbr1 + this.nbr2 }`)
+        },
+        onSubmit() {
+          console.log('this.str3 type is number? ' + (typeof this.str3 === 'number'))
+          console.log('this.str4 type is number? ' + (typeof this.str4 === 'number'))
+          console.log('兩數字相加 = ' + (this.str3 + this.str4))
+          var num1 = (typeof this.str3 !== 'number') ? Number(this.str3) : this.str3
+          var num2 = (typeof this.str4 !== 'number') ? Number(this.str4) : this.str4
+          alert('兩數字相加 = ' + (num1 + num2))
         }
       }
     })
