@@ -127,6 +127,20 @@
     </form>
   </div>
   <hr />
+  <div id="appDateTime" class="container-fluid mt-2">
+    <h2>input:date/time</h2>
+    <form class="form-inline" @submit.prevent="onSubmit">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1" for="staticBirthday">@</span>
+        </div>
+        <input type="date" class="form-control" id="staticBirthday" placeholder="Birthday" v-model="birthday">
+        <input type="time" class="form-control" id="staticTime" placeholder="Time" v-model="myTime">
+      </div>
+      <button type="submit" class="btn btn-primary mb-3 ml-2"><i class="fas fa-calendar-alt"></i></button>
+    </form>
+  </div>
+  <hr />
 
   <!-- CDN: Vue.js -->
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -188,6 +202,30 @@
           var num1 = (typeof this.str3 !== 'number') ? Number(this.str3) : this.str3
           var num2 = (typeof this.str4 !== 'number') ? Number(this.str4) : this.str4
           alert('兩數字相加 = ' + (num1 + num2))
+        }
+      }
+    })
+    new Vue({
+      el: '#appDateTime',
+      data: {
+        birthday: '',
+        myTime: ''
+      },
+      methods: {
+        onSubmit() {
+          console.log('this.birthday type is string? ' + (typeof this.birthday === 'string'))
+          console.log('birthday: ', this.birthday)
+
+          var d = new Date(this.birthday.toString())
+          console.log('type of date', d instanceof Date)
+          console.log('d: ', d)
+          console.log('t: ', this.myTime)
+
+          d.setHours(this.myTime.split(':')[0], this.myTime.split(':')[1])
+          console.log('Current DateTime: ', d)
+
+          var timestamp = new Date(d).getTime()
+          console.log('       timestamp: ',timestamp)
         }
       }
     })
