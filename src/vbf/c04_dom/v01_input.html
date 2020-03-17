@@ -46,6 +46,25 @@
     {{ email }} - {{ password }}
   </div>
   <hr />
+  <div id="appTrim" class="container-fluid mt-2">
+    <h2>input.trim</h2>
+    <form class="form-inline" @submit.prevent="onSubmit">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" id="staticEmail" placeholder="Email" v-model:value="email">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="text" class="form-control" id="inputPassword" placeholder="Password" v-model.trim="password"
+          minlength="4" maxlength="8">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Login</button>
+    </form>
+    {{ email }} - {{ password }}( {{ password.length }} )
+  </div>
+  <hr />
 
   <!-- CDN: Vue.js -->
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -57,6 +76,18 @@
   <script>
     new Vue({
       el: '#appEmail',
+      data: {
+        email: '',
+        password: ''
+      },
+      methods: {
+        onSubmit() {
+          alert(`輸入的 Email: ${ this.email } - Password: ${ this.password }`)
+        }
+      }
+    })
+    new Vue({
+      el: '#appTrim',
       data: {
         email: '',
         password: ''
