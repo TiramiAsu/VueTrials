@@ -11,6 +11,11 @@
   <!-- Google Meterial Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>DOM 物件: Form</title>
+  <style>
+    input:invalid {
+      border-color: red
+    }
+  </style>
 </head>
 <body style="padding: 2% 10%">
   <h3>DOM 物件: Form</h3>
@@ -26,5 +31,55 @@
     </form>
   </div>
   <hr />
+  <div id="appTextArea" class="container-fluid mt2">
+    <h2>textArea: invalid</h2>
+    <form @submit.prevent="onSubmit">
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">電子信箱郵件</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail" placeholder="請輸入電子信箱..." v-model="email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword" placeholder="請輸入密碼..." v-model="password">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="story2" class="col-sm-2 col-form-label">您的寶貴意見:</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" id="story2" rows="3" v-model="opinion"></textarea>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+  </div>
+  <hr />
+
+  <!-- CDN: Vue.js -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#appTextArea',
+      data: {
+        email: '',
+        password: '',
+        opinion: ''
+      },
+      methods: {
+        onSubmit() {
+          alert(`電子郵件: ${ this.email } -- 密碼: ${ this.password } -- 意見: ${ this.opinion }`)
+        }
+      }
+    })
+  </script>
 </body>
 </html>
